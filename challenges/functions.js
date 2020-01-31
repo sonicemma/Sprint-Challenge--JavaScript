@@ -7,6 +7,9 @@
   * The consume function should return the invocation of cb, passing a and b into cb as arguments
 */
 
+const consume = (a, b, cb) => {
+  return cb(a, b);
+}
 
 /* Step 2: Create several functions to callback with consume();
   * Create a function named add that returns the sum of two numbers
@@ -14,18 +17,35 @@
   * Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!"
 */
 
+function add (num1, num2) {
+  return num1 + num2;
+};
+
+function multiply(num1, num2){
+  return num1 * num2;
+}
+
+function greeting(first, last){
+  return `Hello ${first} ${last}, nice to meet you!`;
+}
+
 
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
-// console.log(consume(2, 2, add)); // 4
-// console.log(consume(10, 16, multiply)); // 160
-// console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
+console.log(consume(2, 2, add)); // 4
+console.log(consume(10, 16, multiply)); // 160
+console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
 
 // ==== Closures ==== 
 
 // Explain in your own words why nestedfunction can access the variable internal.
 
-// Explanation: 
+/*
+
+Closures let functions 'ask eachother' for missing variables. Closures cascade down, meaning that variables declared above can be used, but not above.
+The const internal can be accessed by nestedFunction this way. nestedFunction is below it, so it can 'borrow' the variable inside the one above it. If you were to delcare something
+inside nestedFunction, and you tried to use it in myFunction, it would not work and you'd get a reference error!
+*/
 
 
 const external = "I'm outside the function";
